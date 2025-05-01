@@ -3,10 +3,12 @@
   --red: #cb3423;
   --white: #f8efea;
   --grey: #181818;
+  --mint: #54d2a4;
 }
 
 html {
   box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 .fixed {
@@ -19,10 +21,18 @@ html {
   top: 50px;
 }
 
+#nav-bar {
+  top: 0px;
+  position: fixed;
+  background-color: var(--mint);
+  height: 75px;
+  width: 100vw;
+  z-index: 100;
+}
 
 #hero-section {
   position: relative;
-  background-image: url("images/night_sky4x_webp.jpg");
+  background-image: url("images/night_sky4x_webp.webp");
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -39,17 +49,21 @@ html {
 }
 #Jacob {
   position: absolute;
-  background-image: linear-gradient(to left,rgba(0,0,0,0), rgba(10,10,10,1) 25vw);
+  background-image: linear-gradient(to left,rgba(0,0,0,0), rgba(10,10,10,.9) 25vw);
   box-shadow: 20px;
   top: 0%;
-  width: 80%;
+  left: 0%;
+  width: 100vw;
   height: 100%;
   z-index: 2;
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 800px) {
+  body {
+    min-width: fit-content;
+  }
   #Jacob {
-    background-image: linear-gradient(to left,rgba(10,10,10,1), rgba(10,10,10,1));
+    background-image: linear-gradient(to left,rgba(10,10,10,.9), rgba(10,10,10,.9));
     width: 100vw;
   }
   #name-area {
@@ -58,20 +72,82 @@ html {
     top: 50%;
     margin-left: 0vw;
   }
+  body #links-area {
+    display: none;
+  }
+  body #links-area-small {
+    display: flex;
+  }
 }
 
 #name-area {
   position: relative;
-  width: 40vw;
-  min-width: 600px;
-  margin-left: 5vw;
-  top: 28%;
+  min-width: 500px;
+  padding: 0px;
+  margin-left: 8vw;
+  top: 10%;
 }
 
-#Description {
-  position: absolute;
-  top: 0px;
-  z-index: 3;
+#horizontal-align {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#links-area {
+  position: relative;
+  top: 18vh;
+  display: flex;
+  gap: 0vh;
+  flex-direction: column;
+  max-height: 800px;
+
+}
+
+#contact {
+  position: relative;
+  display: inline-block;
+  width: 60%;
+  transform: translate(-50%);
+}
+
+#github {
+  position: relative;
+  width: 60%;
+  transform: translate(-25%);
+}
+
+#resume {
+  position: relative;
+  width: 60%;
+}
+
+#linkedin {
+  position: relative;
+  width: 60%;
+  transform: translate(25%);
+}
+
+#links-area-small {
+  position: relative;
+  display: none;
+  gap: clamp(50px, 5.5vw, 80px);
+  flex-direction: row;
+  flex-wrap: nowrap;
+  width: clamp(100px, 10vw, 120px);
+  margin-left: 12vw;
+  top: 50vh;
+}
+
+#links-area-small i {
+  font-size: 3rem;
+  line-height: 1;
+  color: var(--mint);
+}
+
+#tags {
+  position: relative;
+  top: 40vh;
 }
 
 .Inconsolata {
@@ -79,14 +155,14 @@ html {
 }
 
 .hello {
-  font-size: clamp(33px, 5vw, 58.3px);
+  font-size: clamp(33px, 1.5vw + 2.5vh, 50.3px);
   
 }
 .first {
   margin-top: -50px;
-  font-size: clamp(100px, 10vw, 175px);
+  font-size: 120px;
   font-weight: 700;
-  color: #54d2a4;
+  color: var(--mint);
 }
 
 .comp-text {
@@ -95,7 +171,75 @@ html {
 }
 
 .desc {
-  font-size: clamp(16.5px, 2.5vw, 26.15px);
+  font-size: clamp(20px, min(2.5vw, 2.5vh), 26.15px);
+}
+
+.btn-link{
+  cursor: pointer;
+  padding: 40px 30% 20px 2%;
+  max-height: 90px;
+  max-width: 225px;
+  text-decoration: none;
+  border-radius: 10% / 30% 0%;
+  border: none;
+  background-color: rgba(255,255,255,.05);
+  font-weight: 100;
+  letter-spacing: .2vw;
+  color: var(--mint);
+}
+
+.btn-link i {
+  opacity: 0;
+}
+
+.btn-link-sm {
+  width: 80px;  /* or any fixed size */
+  height: 80px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 6px;
+  border: 3px solid black;
+  border-radius: 50%;  /* makes it a circle */
+  background-color: rgba(255,255,255,.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-container {
+  width: 100%;
+  padding-top: 2vh;
+  padding-bottom: 2vh;
+}
+
+.btn-link:hover {
+  color: var(--mint);
+  background-color: rgba(255,255,255,.2);
+  letter-spacing: .5vw;
+}
+
+.btn-link:hover i {
+  opacity: 1;
+}
+
+.btn-link-sm:hover {
+  background-color: rgba(255,255,255,.2);
+}
+
+.btn-link-transitions {
+  transition: letter-spacing .4s, background-color .2s;
+  transition-timing-function: ease-out;
+}
+
+.inner {
+  display: inline-flex; 
+  align-items: center; 
+  gap: 0.5em;
+}
+
+.inner i {
+  transition: opacity .5s, font-size .5s;
+  transform: translateY(-2%);
 }
 @keyframes vibe {
   0% {

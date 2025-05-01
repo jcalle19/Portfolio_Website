@@ -18,32 +18,94 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <link href="style.css" rel="stylesheet" type="text/css" />
   </head>
 
   <body>
     <!-- TODO: Paste Navbar code and customize links -->
     <nav id="nav-bar">
-
+      hello
     </nav>
     <!-- Hero section -->
     <section id="hero-section">
       <div id="filter"></div>
-      <section id="Jacob">
-        <div id="name-area">
-          <p class="hello comp-text text-center">Hello, I'm</p>
-          <p id="name" class="first Inconsolata text-center">&ltJacob/&gt</p>
-          <p class="desc comp-text text-center">• Aspiring Full Stack Developer •</p>
-          <p class="desc comp-text text-center">• Current Web Dev Enthusiast •</p>
-        </div>
-      </section>
+      <div id="horizontal-align" class="container">
+        <section id="Jacob">
+          <div id="name-area" class="row">
+            <div id="intro" class="col-5">
+              <p class="hello comp-text">Hello, I'm</p>
+              <p id="name" class="first Inconsolata text-center">Jacob</p>
+            </div>
+            <div class="col-1"></div>
+            <div id="links-area" class="col-5 text-center">
+              <div class="btn-container">
+                <button id="contact" class="btn-link btn-link-transitions desc">
+                  <span id="contact-inner" class="inner">
+                    Contact 
+                    <i class="bi bi-envelope"></i>
+                  </span>
+                </button>
+              </div>
+              <div class="btn-container">
+                <button id="github" class="btn-link btn-link-transitions desc">
+                  <span id="github-inner" class="inner">
+                    GitHub
+                    <i class="bi bi-github"></i>
+                  </span>
+                </button>
+              </div>
+              <div class="btn-container">
+                <button id="resume" class="btn-link btn-link-transitions desc">
+                  <span id="resume-inner" class="inner">
+                    Resume
+                    <i class="bi bi-file-earmark-text"></i>
+                  </span>
+                </button>
+              </div>
+              <div class="btn-container">
+                <button id="linkedin" class="btn-link btn-link-transitions desc">
+                  <span id="linkedin-inner" class="inner">
+                    LinkedIn
+                    <i class="bi bi-linkedin"></i>
+                  </span>
+                </button>
+              </div>
+            </div>
+            <div class="col-1"></div>
+          </div>
+          <div id="links-area-small" class="row">
+            <button class="btn-link-sm btn-link-transitions desc"><i class="bi bi-envelope"></i></button>
+            <button class="btn-link-sm btn-link-transitions desc"><i class="bi bi-github"></i></button>
+            <button class="btn-link-sm btn-link-transitions desc"><i class="bi bi-file-earmark-text"></i></button>
+            <button class="btn-link-sm btn-link-transitions desc"><i class="bi bi-linkedin"></i></button>
+          </div>
+        </section>
     </section>
 
+    <!-- About Me -->
+    <section id="about-section">
+      <h1>About Me</h1>
+      <p>I am a frontend-focused developer currently learning backend technologies <br>
+        who graduated from Arizona State University in May, 2025. Complex problems and <br>
+        intricate designs are invitations to prove my 
+      </p>
+    </section>
     <!-- Skills section -->
     <section id="skills-section">
       <!--Fill with skills-->
+      <h1>Known Technologies and Skills</h1>
     </section>
-
+    <!-- Experience-->
+    <section id="experience-section">
+      <h1>Work Experience and Projects</h1>
+    </section>
+    <section id="cert-section">
+      <h1>Certificates</h1>
+    </section>
+    <section id="wip-section">
+      <h1>Current In-Progress projects and learning</h1>
+    </section>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
