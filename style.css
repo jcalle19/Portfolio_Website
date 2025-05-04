@@ -4,18 +4,22 @@
   --white: #f8efea;
   --grey: #181818;
   --mint: #54d2a4;
+  --navCrclWidth: 90vw;
 }
 
 html {
   box-sizing: border-box;
   overflow-x: hidden;
 }
-
+body {
+  width: 100vw;
+  margin: 0;
+  background-color: black;
+}
 .fixed {
   position: fixed;
   width: 100vw;
 }
-
 .relative {
   position: relative;
   top: 50px;
@@ -37,7 +41,7 @@ html {
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position-x: center;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
 }
 
@@ -82,9 +86,8 @@ html {
 
 #name-area {
   position: relative;
-  min-width: 500px;
-  padding: 0px;
-  margin-left: 8vw;
+  width: 100%;
+  padding-left: 5vw;
   top: 10%;
 }
 
@@ -101,7 +104,6 @@ html {
   gap: 0vh;
   flex-direction: column;
   max-height: 800px;
-
 }
 
 #contact {
@@ -150,6 +152,209 @@ html {
   top: 40vh;
 }
 
+#nav-circle {
+  position: relative;
+  width: var(--navCrclWidth);
+  height: var(--navCrclWidth);
+  border-radius: 50%;
+  background-color: black;
+  position: relative;
+  background-image: linear-gradient(to left,rgba(0,0,0,0), rgba(10,10,10,.7) 25vw), 
+  url("images/night_sky4x_webp.webp");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position-x: center;
+}
+
+#node-offset {
+  height: calc(var(--navCrclWidth) / 12);
+}
+
+#circle-connector {
+  border: none;
+  background-color: none;
+  animation: spin 100s linear infinite;
+  z-index: 2;
+}
+
+#solar-system {
+  z-index: 1;
+}
+
+#sun {
+  padding-bottom: 1.4vw;
+}
+
+#sun i {
+  font-size: 5vw;
+  color: rgb(203, 203, 0);
+}
+
+#mercury {
+  width: 10vw;
+  height: 10vw;
+  animation: spin 30s linear infinite;
+}
+
+#mercury i {
+  position: absolute;
+  color: rgb(108, 108, 108);
+  font-size: 1.5vw;
+  top: 50%;
+  left: -7.5%;
+  transform: translateY(-50%);
+}
+
+#venus {
+  width: 15vw;
+  height: 15vw;
+  animation: spin 36s linear infinite;
+}
+
+#venus i {
+  position: absolute;
+  color: rgb(110, 255, 97);
+  font-size: 1.8vw;
+  top: 50%;
+  left: -6.2%;
+  transform: translateY(-50%);
+}
+
+#earth {
+  width: 20vw;
+  height: 20vw;
+  animation: spin 42s linear infinite;
+}
+
+#earth i {
+  position: absolute;
+  color: rgb(122, 122, 255);
+  font-size: 1.9vw;
+  top: 50%;
+  left: -5.2%;
+  transform: translateY(-50%);
+}
+
+#mars {
+  width: 25vw;
+  height: 25vw;
+  animation: spin 48s linear infinite;
+}
+
+#mars i {
+  position: absolute;
+  color: rgb(255, 55, 0);
+  font-size: 2.1vw;
+  top: 50%;
+  left: -4.4%;
+  transform: translateY(-50%);
+}
+
+#jupiter {
+  width: 33vw;
+  height: 33vw;
+  animation: spin 54s linear infinite;
+}
+
+#jupiter i {
+  position: absolute;
+  color: rgb(184, 141, 101);
+  font-size: 4.2vw;
+  top: 50%;
+  left: -6.4%;
+  transform: translateY(-50%);
+}
+
+#saturn {
+  width: 43vw;
+  height: 43vw;
+  animation: spin 60s linear infinite;
+}
+
+#saturn i {
+  position: absolute;
+  color: rgb(161, 165, 100);
+  font-size: 3.4vw;
+  top: 50%;
+  left: -4%;
+  transform: translateY(-50%);
+  transform-style: preserve-3d;
+  
+}
+
+#uranus {
+  width: 50vw;
+  height: 50vw;
+  animation: spin 66s linear infinite;
+}
+
+#uranus i {
+  position: absolute;
+  color: rgb(0, 238, 255);
+  font-size: 2.0vw;
+  top: 50%;
+  left: -2.25%;
+  transform: translateY(-50%);
+}
+
+#neptune {
+  width: 55vw;
+  height: 55vw;
+  animation: spin 72s linear infinite;
+}
+
+#neptune i {
+  position: absolute;
+  color: blue;
+  font-size: 2.0vw;
+  top: 50%;
+  left: -2.15%;
+  transform: translateY(-50%);
+}
+
+#ring-container {
+  transform-style: preserve-3d;
+}
+
+#ring {
+  left: 48.89%;
+  width: 4.5vw;
+  height: 4.5vw;
+  border: 3px solid white;
+  border-radius: 50%;
+  transform: translate(-50%, -45%) rotate3d(1,0,0,65deg);
+  transform-style: preserve-3d;
+  z-index: 0;
+}
+
+.planet {
+  margin: auto;
+  border-radius: 50%;
+  border: 1px dashed white;
+  z-index: 2;
+}
+
+.nav-circle-inner {
+  
+  /*circle width times chosen factor (based of of 80vw to equal 68.5vw)*/
+  width: calc(var(--navCrclWidth) * 0.85625);
+  height: calc(var(--navCrclWidth) * 0.85625);
+  margin: auto;
+  border-radius: 50%;
+}
+
+.absolute-center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.nav-row {
+  justify-content: space-evenly;
+  height: calc(var(--navCrclWidth) / 6);
+}
 .Inconsolata {
   font-family: 'Inconsolata';
 }
@@ -241,6 +446,14 @@ html {
   transition: opacity .5s, font-size .5s;
   transform: translateY(-2%);
 }
+
+.circle {
+  width: calc(var(--navCrclWidth) / 6);
+  height: calc(var(--navCrclWidth) / 6);
+  border-radius: 50%;
+  background-color: var(--mint);
+  z-index: 3;
+}
 @keyframes vibe {
   0% {
     transform: translate(-50%, -50%) rotate(0deg);
@@ -253,3 +466,7 @@ html {
   }
 }
 
+@keyframes spin {
+  from {transform: translate(-50%, -50%), rotate(0deg);}
+  to {transform: translate(-50%, -50%) rotate(360deg);}
+}
