@@ -35,6 +35,7 @@ body {
 }
 
 #hero-section {
+  overflow: hidden;
   position: relative;
   background-image: url("images/night_sky4x_webp.webp");
   background-size: cover;
@@ -53,7 +54,7 @@ body {
 }
 #Jacob {
   position: absolute;
-  background-image: linear-gradient(to left,rgba(0,0,0,0), rgba(10,10,10,.9) 25vw);
+  background-image: linear-gradient(to left,rgba(0,0,0,0), rgba(10,10,10,.9) 0%);
   box-shadow: 20px;
   top: 0%;
   left: 0%;
@@ -147,19 +148,48 @@ body {
   color: var(--mint);
 }
 
+#up-arrow-button {
+  cursor: pointer;
+  background-color: rgba(0,0,0,0);
+  border: 0px solid rgba(0,0,0,0);
+  position: absolute;
+  left: 50%;
+  bottom: 0%;
+  transform: translate(-50%, -50%);
+}
+
+#up-arrow-button i {
+  display: block;
+  position: relative;
+  border-radius: 50%;
+  padding: .5rem;
+  line-height: .5;
+  font-size: 3rem;
+  color: var(--mint);
+  transition: background-color .2s, color .2s;
+}
+
+#up-arrow-button i:hover {
+  background-color: var(--mint);
+  color: black;
+}
+
 #tags {
   position: relative;
   top: 40vh;
 }
 
 #nav-circle {
+  overflow: hidden;
   position: relative;
   width: var(--navCrclWidth);
   height: var(--navCrclWidth);
+  max-height: 0vh;
+  max-width: 100vh;
   border-radius: 50%;
   background-color: black;
   position: relative;
-  background-image: linear-gradient(to left,rgba(0,0,0,0), rgba(10,10,10,.7) 25vw), 
+  background-image: linear-gradient(to left,rgba(0,0,0,0), rgba(10,10,10,.9) 0%), 
   url("images/night_sky4x_webp.webp");
   background-size: cover;
   background-repeat: no-repeat;
@@ -179,11 +209,22 @@ body {
 }
 
 #solar-system {
+  border: 5px solid red;
+  transform: translate(-50%, -50%) rotate3d(1,0,0,75deg);
+  transform-style: preserve-3d;
+  max-height: 100vh;
+  max-width: 100vh;
   z-index: 1;
+}
+
+#solar-system * {
+  transform-style: preserve-3d;
 }
 
 #sun {
   padding-bottom: 1.4vw;
+  transform: translate(-50%, -50%) rotate3d(1,0,0,90deg);
+  z-index: 3;
 }
 
 #sun i {
@@ -195,6 +236,7 @@ body {
   width: 10vw;
   height: 10vw;
   animation: spin 30s linear infinite;
+  z-index: 2;
 }
 
 #mercury i {
@@ -203,7 +245,7 @@ body {
   font-size: 1.5vw;
   top: 50%;
   left: -7.5%;
-  transform: translateY(-50%);
+  animation: spin-y 30s linear infinite;
 }
 
 #venus {
@@ -218,7 +260,7 @@ body {
   font-size: 1.8vw;
   top: 50%;
   left: -6.2%;
-  transform: translateY(-50%);
+  animation: spin-y 36s linear infinite;
 }
 
 #earth {
@@ -233,7 +275,7 @@ body {
   font-size: 1.9vw;
   top: 50%;
   left: -5.2%;
-  transform: translateY(-50%);
+  animation: spin-y 42s linear infinite;
 }
 
 #mars {
@@ -248,7 +290,7 @@ body {
   font-size: 2.1vw;
   top: 50%;
   left: -4.4%;
-  transform: translateY(-50%);
+  animation: spin-y 48s linear infinite;
 }
 
 #jupiter {
@@ -263,7 +305,7 @@ body {
   font-size: 4.2vw;
   top: 50%;
   left: -6.4%;
-  transform: translateY(-50%);
+  animation: spin-y 54s linear infinite;
 }
 
 #saturn {
@@ -278,9 +320,9 @@ body {
   font-size: 3.4vw;
   top: 50%;
   left: -4%;
-  transform: translateY(-50%);
+  transform: translateY(-50%) rotate3d(1,0,0,90deg);
   transform-style: preserve-3d;
-  
+  animation: spin-y 60s linear infinite;
 }
 
 #uranus {
@@ -295,7 +337,7 @@ body {
   font-size: 2.0vw;
   top: 50%;
   left: -2.25%;
-  transform: translateY(-50%);
+  animation: spin-y 66s linear infinite;
 }
 
 #neptune {
@@ -310,7 +352,7 @@ body {
   font-size: 2.0vw;
   top: 50%;
   left: -2.15%;
-  transform: translateY(-50%);
+  animation: spin-y 72s linear infinite;
 }
 
 #ring-container {
@@ -323,8 +365,7 @@ body {
   height: 4.5vw;
   border: 3px solid white;
   border-radius: 50%;
-  transform: translate(-50%, -45%) rotate3d(1,0,0,65deg);
-  transform-style: preserve-3d;
+  transform: translate(-50%, -38%) rotate3d(1,0,0,90deg);
   z-index: 0;
 }
 
@@ -334,6 +375,11 @@ body {
   border: 1px dashed white;
   z-index: 2;
 }
+
+.planet-rotate {
+  transform: translateY(-50%) rotate3d(1,0,0,90deg);
+}
+
 
 .nav-circle-inner {
   
@@ -454,6 +500,15 @@ body {
   background-color: var(--mint);
   z-index: 3;
 }
+
+.expand-animation {
+  animation: expand .25s ease-out forwards;
+}
+
+.expand-animation-reverse {
+  animation: reverse-expand .25s ease-out forwards;
+}
+
 @keyframes vibe {
   0% {
     transform: translate(-50%, -50%) rotate(0deg);
@@ -467,6 +522,28 @@ body {
 }
 
 @keyframes spin {
-  from {transform: translate(-50%, -50%), rotate(0deg);}
-  to {transform: translate(-50%, -50%) rotate(360deg);}
+  0% {transform: translate(-50%, -50%), rotate(0deg);z-index: 1}
+  80% {z-index: 4}
+  100% {transform: translate(-50%, -50%) rotate(360deg);}
+}
+
+@keyframes spin-y {
+  0% {transform: rotate3d(1,0,0,90deg) rotateY(0deg); z-index: 1}
+  80% {z-index: 4}
+  100% {transform: rotate3d(1,0,0,90deg) rotateY(-360deg);}
+}
+
+@keyframes sun-layer {
+  0% {z-index: 1}
+  25% {z-index: 4}
+}
+
+@keyframes expand {
+  0% {max-height: 0vh;}
+  100% {max-height: 100vh;}
+}
+
+@keyframes reverse-expand {
+  0% {max-height: 100vh;}
+  100% {max-height: 0vh;}
 }
