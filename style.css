@@ -39,8 +39,6 @@ body {
   height: 8vh;
   min-height: 75px;
   max-height: 200px;
-  background-color: var(--mint);
-
 }
 
 #hero-section {
@@ -170,10 +168,10 @@ body {
 }
 
 #down-arrow-button {
-  background-color: rgba(0,0,0,0);
   border: 0px solid rgba(0,0,0,0);
+  width: 100%;
   font-size: 2rem;
-  transition: background-color .2s, color .2s;
+  transition:transform .4s, background-color .2s, color .2s;
 }
 
 #up-arrow-button i {
@@ -195,7 +193,7 @@ body {
 
 #down-arrow-button:hover {
   color: var(--mint);
-  background-color: rgba(0,0,0,.8);
+  background-color: rgba(255,255,255,.02);
 }
 
 #tags {
@@ -238,6 +236,7 @@ body {
   max-height: 100vh;
   max-width: 100vh;
   z-index: 1;
+  transition: transform .4s ease-out;
 }
 
 #solar-system * {
@@ -260,6 +259,17 @@ body {
   height: 10vw;
   animation: spin 30s linear infinite;
   z-index: 2;
+  transition: opacity 1s;
+}
+
+#mercury-selected {
+  width: 10vw;
+  height: 10vw;
+  border-radius: 50%;
+  animation: spin-y-center 5s linear infinite;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 1s;
 }
 
 #mercury i {
@@ -275,6 +285,17 @@ body {
   width: 15vw;
   height: 15vw;
   animation: spin 36s linear infinite;
+  transition: opacity 1s;
+}
+
+#venus-selected {
+  width: 15vw;
+  height: 15vw;
+  border-radius: 50%;
+  animation: spin-y-center 5s linear infinite;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 1s;
 }
 
 #venus i {
@@ -290,6 +311,17 @@ body {
   width: 20vw;
   height: 20vw;
   animation: spin 42s linear infinite;
+  transition: opacity 1s;
+}
+
+#earth-selected {
+  width: 20vw;
+  height: 20vw;
+  border-radius: 50%;
+  animation: spin-y-center 5s linear infinite;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 1s;
 }
 
 #earth i {
@@ -305,6 +337,17 @@ body {
   width: 25vw;
   height: 25vw;
   animation: spin 48s linear infinite;
+  transition: opacity 1s;
+}
+
+#mars-selected {
+  width: 25vw;
+  height: 25vw;
+  border-radius: 50%;
+  animation: spin-y-center 5s linear infinite;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 1s;
 }
 
 #mars i {
@@ -320,6 +363,17 @@ body {
   width: 33vw;
   height: 33vw;
   animation: spin 54s linear infinite;
+  transition: opacity 1s;
+}
+
+#jupiter-selected {
+  width: 33vw;
+  height: 33vw;
+  border-radius: 50%;
+  animation: spin-y-center 5s linear infinite;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 1s;
 }
 
 #jupiter i {
@@ -386,7 +440,7 @@ body {
   left: 48.89%;
   width: 4.5vw;
   height: 4.5vw;
-  border: 3px solid white;
+  border: 1px solid white;
   border-radius: 50%;
   transform: translate(-50%, -38%) rotate3d(1,0,0,90deg);
   z-index: 0;
@@ -395,7 +449,8 @@ body {
 .planet {
   margin: auto;
   border-radius: 50%;
-  border: 1px dashed white;
+  border: 1px dashed grey;
+  transition: animation 5s;
   z-index: 2;
 }
 
@@ -420,6 +475,14 @@ body {
   transform: translate(-50%, -50%);
 }
 
+.relative-center {
+  position: relative;
+  width: calc(var(--navCrclWidth) * 0.85625 / 1.25);
+  height: calc(var(--navCrclWidth) * 0.85625 / 2.75);
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
 .nav-row {
   justify-content: space-evenly;
   height: calc(var(--navCrclWidth) / 6);
@@ -492,10 +555,30 @@ body {
   letter-spacing: .5vw;
 }
 
-.nav-link:hover {
+.solar-system-container {
+  
+}
+
+.nav-link-container {
+  height: 100%;
+  padding: 0px;
+}
+.nav-link {
+  height: 100%;
+  background-color: var(--mint);
+}
+
+.nav-link:not(#down-arrow-button) {
+  font-size: 1.25rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-link:hover:not(#down-arrow-button){
   color: var(--mint);
-  background-color: rgba(0,0,0,.8);
-  letter-spacing: .5vw;
+  background-color: rgba(255,255,255,.02);
+  letter-spacing: .3vw;
 }
 
 .btn-link:hover i {
@@ -507,7 +590,7 @@ body {
 }
 
 .btn-link-transitions {
-  transition: letter-spacing .4s, background-color .2s;
+  transition:transform .4s, letter-spacing .4s, background-color .2s;
   transition-timing-function: ease-out;
 }
 
@@ -538,6 +621,7 @@ body {
   animation: reverse-expand .45s ease-out forwards;
 }
 
+
 @keyframes vibe {
   0% {
     transform: translate(-50%, -50%) rotate(0deg);
@@ -551,15 +635,28 @@ body {
 }
 
 @keyframes spin {
-  0% {transform: translate(-50%, -50%), rotate(0deg);z-index: 1}
+  0% {transform: translate(-50%, -50%) rotateZ(0deg);z-index: 1}
   80% {z-index: 4}
-  100% {transform: translate(-50%, -50%) rotate(360deg);}
+  100% {transform: translate(-50%, -50%) rotateZ(360deg);}
 }
 
 @keyframes spin-y {
   0% {transform: rotate3d(1,0,0,90deg) rotateY(0deg); z-index: 1}
   80% {z-index: 4}
   100% {transform: rotate3d(1,0,0,90deg) rotateY(-360deg);}
+}
+
+@keyframes spin-y-center {
+  0% {transform: translate(-50%, -50%) rotate3d(1,0,0,90deg) rotateZ(0deg) rotateY(0deg); z-index: 1; border: 3px solid purple;}
+  10% {border: 3px solid orange;}
+  20% {border: 3px solid var(--mint);}
+  30% {border: 3px solid cyan;}
+  40% {border: 3px solid white;}
+  50% {border: 3px solid red;}
+  60% {border: 3px solid pink;}
+  70% {border: 3px solid grey;}
+  80% {z-index: 4; border: 3px solid yellow;}
+  100% {transform: translate(-50%, -50%) rotate3d(1,0,0,90deg) rotateZ(360deg) rotateY(-360deg); border: 3px solid blue;}
 }
 
 @keyframes sun-layer {
@@ -576,3 +673,4 @@ body {
   0% {max-height: 100vh; min-height: 500px;}
   100% {max-height: 0vh; min-height: 0px;}
 }
+
